@@ -1,7 +1,14 @@
 const request = require('request')
 
-const url = 'https://api.darksky.net/forecast/8ba53b38cc3194a7746c341bd7554374/37.8267,-122.4233'
+const config = require('./config')
 
-request({url : url} , (error,response) => {
-    console.log(response)
+const url = config.baseUrl+config.secretKey+'/'+config.coordinates
+
+request({url : url , json : true } , (error,response) => {
+    //w/o json : true in options array
+    // const formattedResponse = JSON.parse(response.body)
+    // console.log(formattedResponse.currently)
+
+    //w/ json : true in options array
+    console.log(response.body.currently)
 })
