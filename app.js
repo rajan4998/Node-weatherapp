@@ -23,9 +23,12 @@ request({ url : geocodeUrl,  json : true},(error,geoResponse) => {
                     console.log('Unable to connect to geocoding service')
                 } else if (response.body.error) {
                     console.log('Unable to find location')
-                }else{
+                } else if (response.body.currently!=null){
                     const forecast = response.body.currently
                     console.log(forecast.summary + '. It is currently ' + forecast.temperature + ' degree.There is ' + forecast.precipProbability+' chance of raining today.')
+                }
+                else{
+                    console.log("Config not set")
                 }
             })
         }else{
