@@ -9,13 +9,13 @@ const weatherForecast = require('./utils/weatherforecast')
 let apiCoordinates = '28.702850,77.428749'
 
 //function geoCode calling
-geoCode('India', (error, response) => {
+geoCode('New Delhi', (error, response) => {
     console.log('Error : '+error)
     console.log(response)
-})
 
-//function weatherforecast calling
-weatherForecast(apiCoordinates,(error,response)=>{
-    console.log('Error : '+error)
-    console.log(response)
+    //function weatherforecast calling
+    weatherForecast(response.longitude, response.latitude,(error,response)=>{
+        console.log('Error : '+error)
+        console.log(response)
+    })
 })

@@ -1,9 +1,9 @@
 const request = require('request')
 const config = require('../config')
 
-const weatherForecast = (coordinates, callback) => {
+const weatherForecast = (longitude, latitude, callback) => {
 
-    const url = config.baseUrl + config.secretKey + '/' + coordinates
+    const url = config.baseUrl + config.secretKey + '/' + longitude + ',' + latitude
 
     request({ url: url, json: true }, (weatherError, response) => {
         if (weatherError) {
