@@ -11,5 +11,4 @@ request({url : url , json : true } , (error,response) => {
 
     //w/ json : true in options array
     console.log(response.body.currently)
-    
 })
