@@ -8,13 +8,17 @@ const weatherForecast = require('./utils/weatherforecast')
 //coordinates defined
 let apiCoordinates = '28.702850,77.428749'
 
+if(!process.argv){
+    return console.log('No inputs provided')
+}
+
 //function geoCode calling
-geoCode(process.argv[2], (error, response) => {
-    console.log('Error : ' + error)
-    console.log(response)
+geoCode(process.argv[2], (error, { latitude, longitude, location}) => {
+    console.log('Geocode Error : ' + error)
+    // console.log(response)
 
     //function weatherforecast calling
-    weatherForecast(response.longitude, response.latitude, (error, response) => {
+    weatherForecast(longitude, latitude, location, (error, response) => {
         console.log('Error : ' + error)
         console.log(response)
     })
